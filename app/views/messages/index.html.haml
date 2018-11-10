@@ -1,67 +1,57 @@
-!!!
-%html{lang:"ja"}
-  %head
-    %meta{charset: "utf-8"}
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
-    %link{rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity: "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin: "anonymous"}
-    %script{}
-  %body
-    %header チャットグループが作成されました。
-    %div.chat-side
-      %div.chat-side_user
-        %div.chat-side_user-content
-          %div.chat-side_user-name user-name
-          %a.chat-side_user-edit-user{href: ""}
-            %li.fa.fa-cog
-          %a.chat-side_user-new-group{href: ""}
-            %li.fa.fa-pencil-square-o
-      //左のグループ一覧と最新のメッセージの表示
-      %div.chat-side_groups
-        %div.chat-side_gtoup-list
-          %a{href: ""}
-            %div.chat-side_group
-              %div.chat-side_group-name group-name
-              %div.chat-side_group-message group-message
-          %a{href: ""}
-            %div.chat-side_group
-              %div.chat-side_group-name group-name2222222
-              %div.chat-side_group-message group-message22222222
-    %div.chat-main
-      %div.chat-main_header
-        %div
-          %div.chat-main_header-group.clearfix
-            testtes
-          %div.chat-main_header-edit-group.btn.btn-outline-info
-            Edit
-        %div.chat-main_header-members
-          testtesttesttesttesttesttesttest
-      %div.chat-main_body
-        %div.chat-main_body-messages-list
-          %div.chat-main_message
-            %div.chat-main_message-name message-name
-            %div.chat-main_message-time 2018/10/10 11:11
-            %div.chat-main_message-body
-              %p message-body
-              %img.chat-main_message-body-image
-          %div.chat-main_message
-            %div.chat-main_message-name message-name2
-            %div.chat-main_message-time 2018/10/11 11:11
-            %div.chat-main_message-body
-              %p message-body2message-body2message-body2
-              %img.chat-main_message-body-image
-          %div.chat-main_message
-            %div.chat-main_message-name message-name3
-            %div.chat-main_message-time 2018/10/12 11:11
-            %div.chat-main_message-body
-              %p message-body3
-              %img.chat-main_message-body-image
-      %div.chat-main_footer
-        %form.chat-main_footer-from#new_message{method: "post"}
-          %div.chat-main_footer-body.input-group.mb-3
-            %input.message#message_body.form-control{placeholder: "type a message", type: "text", name: "message[body]"}
-            %button.chat-file.btn-default{type: "button", name: "message_image"}
-              %i.fa.fa-image
-            %input.submit.btn.btn-lg.btn-primary{type: "submit", name: "commit", value: "send"}
-      %script{src: "https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity: "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin: "anonymous"}
-      %script{src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js", integrity: "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin: "anonymous"}
-      %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin: "anonymous"}
+%body
+  %header チャットグループが作成されました。
+  %div.chat-side
+    %div.chat-side_user
+      %div.chat-side_user-content
+        %div.chat-side_user-name user-name
+        %a.chat-side_user-edit-user{href: ""}
+          %li.fa.fa-cog
+        %a.chat-side_user-new-group{href: ""}
+          %li.fa.fa-pencil-square-o
+    //左のグループ一覧と最新のメッセージの表示
+    %div.chat-side_groups
+      %div.chat-side_gtoup-list
+        %a{href: ""}
+          %div.chat-side_group
+            %div.chat-side_group-name group-name
+            %div.chat-side_group-message group-message
+        %a{href: ""}
+          %div.chat-side_group
+            %div.chat-side_group-name group-name2222222
+            %div.chat-side_group-message group-message22222222
+  %div.chat-main
+    %div.chat-main_header
+      %div
+        %div.chat-main_header-group.clearfix
+          testtes
+        %div.chat-main_header-edit-group.btn.btn-outline-info
+          Edit
+      %div.chat-main_header-members
+        testtesttesttesttesttesttesttest
+    %div.chat-main_body
+      %div.chat-main_body-messages-list
+        %div.chat-main_message
+          %div.chat-main_message-name message-name
+          %div.chat-main_message-time 2018/10/10 11:11
+          %div.chat-main_message-body
+            %p message-body
+            %img.chat-main_message-body-image
+        %div.chat-main_message
+          %div.chat-main_message-name message-name2
+          %div.chat-main_message-time 2018/10/11 11:11
+          %div.chat-main_message-body
+            %p message-body2message-body2message-body2
+            %img.chat-main_message-body-image
+        %div.chat-main_message
+          %div.chat-main_message-name message-name3
+          %div.chat-main_message-time 2018/10/12 11:11
+          %div.chat-main_message-body
+            %p message-body3
+            %img.chat-main_message-body-image
+    %div.chat-main_footer
+      %form.chat-main_footer-from#new_message{method: "post"}
+        %div.chat-main_footer-body.input-group.mb-3
+          %input.message#message_body.form-control{placeholder: "type a message", type: "text", name: "message[body]"}
+          %button.chat-file.btn-default{type: "button", name: "message_image"}
+            %i.fa.fa-image
+          %input.submit.btn.btn-lg.btn-primary{type: "submit", name: "commit", value: "send"}
