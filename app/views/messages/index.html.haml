@@ -1,24 +1,6 @@
 %body
   %header チャットグループが作成されました。
-  %div.chat-side
-    %div.chat-side_user
-      %div.chat-side_user-content
-        %div.chat-side_user-name user-name
-        %a.chat-side_user-edit-user{href: ""}
-          %li.fa.fa-cog
-        %a.chat-side_user-new-group{href: ""}
-          %li.fa.fa-pencil-square-o
-    //左のグループ一覧と最新のメッセージの表示
-    %div.chat-side_groups
-      %div.chat-side_gtoup-list
-        %a{href: ""}
-          %div.chat-side_group
-            %div.chat-side_group-name group-name
-            %div.chat-side_group-message group-message
-        %a{href: ""}
-          %div.chat-side_group
-            %div.chat-side_group-name group-name2222222
-            %div.chat-side_group-message group-message22222222
+  =render "shared/side_bar"
   %div.chat-main
     %div.chat-main_header
       %div
