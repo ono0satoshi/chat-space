@@ -2,3 +2,15 @@
 @import "./style";
 @import "font-awesome";
 @import "./user";
+
+.notice {
+  background: green;
+  color: white;
+  text-align: center;
+}
+
+.alert {
+  background: red;
+  color: white;
+  text-align: center;
+}
