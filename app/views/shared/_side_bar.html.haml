@@ -11,12 +11,14 @@
           = fa_icon 'cog', class: 'icon'
   //左のグループ一覧と最新のメッセージの表示
   %div.chat-side_groups
-    %div.chat-side_gtoup-list
-      %a{href: ""}
-        %div.chat-side_group
-          %div.chat-side_group-name group-name
-          %div.chat-side_group-message group-message
-      %a{href: ""}
-        %div.chat-side_group
-          %div.chat-side_group-name group-name2222222
-          %div.chat-side_group-message group-message22222222
+    - current_user.groups.each do |group|
+      %div.chat-side_group
+        = link_to group_messages_path(group) do
+          %div.chat-side_group-name
+            = group.name
+          %div.chat-side_group-message
+            まだメッセージはありません
+    -# %a{href: ""}
+    -#   %div.chat-side_group
+    -#     %div.chat-side_group-name group-name2222222
+    -#     %div.chat-side_group-message group-message22222222
