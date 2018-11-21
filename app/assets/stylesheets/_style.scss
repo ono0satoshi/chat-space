@@ -4,6 +4,7 @@
   float:left;
   height:100vh;
   width:300px;
+  position:fixed;
 
   &_user {
   line-height: 100px;
@@ -66,8 +67,11 @@
 
   &_header {
     height:100px;
+    width: calc(100% - 380px);
     border-bottom: #eeeeee solid thin;
     margin-bottom:46px;
+    position: fixed;
+    background: #ffffff;
 
     &-group {
       padding: 35px 0 15px;
@@ -87,6 +91,10 @@
       margin: 28px 0 15px;
       font-size: 20px;
     }
+  }
+
+  &_body {
+    margin:146px 0 86.81px;
   }
 
   &_message {
@@ -112,6 +120,8 @@
       width:100%;
       display:inline;
 
+
+
       p{
           margin-top:10px;
           margin-bottom:40px;
@@ -123,7 +133,7 @@
     background: #e6e6e6;
     width:calc(100% - 300px);
     padding-right:40px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     float:right;
@@ -138,11 +148,22 @@
   font-size: 16px;
   color: #434a54;
   padding-left:40px;
+  height: 50px;
+  margin-top: 20px;
+  width:calc(100% - 110px);
 }
+form {
+        width:100%;
+      }
 
 .chat-file {
   top:20;
   background: #ffffff;
+}
+
+.hidden {
+  opacity: 0;
+  width: 5px;
 }
 
 .fa-image {
@@ -151,6 +172,5 @@
 
 .submit {
   background: #38aefd;
-  margin-left: 15px;
 }
 
