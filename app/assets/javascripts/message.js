@@ -51,8 +51,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-main_body').append(html);
-      $('.message').val('');
-      $('')
+      document.getElementById('new_message').reset();
       var newPostPosi = $('#target').offset().top;
       $('html,body').animate({scrollTop:newPostPosi},'fast');
     })
