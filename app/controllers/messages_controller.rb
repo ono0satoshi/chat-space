@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       end
     else
       @message = @group.messages.includes(:user)
-      redirect_to ({action: :index}), alert: 'メッセージを入力してください'
+      redirect_to group_messages_path, alert: 'メッセージを入力してください'
     end
   end
 
