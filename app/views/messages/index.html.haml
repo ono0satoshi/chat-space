@@ -13,7 +13,7 @@
       = render @messages
     %div.chat-main_footer
       .chat-main-footer-body.input-group.mb-3
-        = form_for [@group, @message] do |f|
+        = form_for [@group, @message],html:{id: 'new_message'} do |f|
           = f.text_field :body, class: "message", id: "message_body", placeholder: "type a message"
           = f.label :image, class: "" do
             = fa_icon 'picture-o', class: 'icon'
