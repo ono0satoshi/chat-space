@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do
+  User.create(
+    name: Faker::Internet.username,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    created_at: Faker::Time.between(2.days.ago,Date.today,:all),
+    updated_at: Faker::Time.between(1.days.ago,Date.today,:all)
+    )
+end
