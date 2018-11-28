@@ -6,7 +6,7 @@
         %div.chat-main_header-group.clearfix
           = @group.name
         %div.chat-main_header-edit-group.btn.btn-outline-info
-          Edit
+          = link_to 'Edit',edit_group_path(@group)
       %div.chat-main_header-members
         ="Member:" + @group.users.find(1).name
     %div.chat-main_body
