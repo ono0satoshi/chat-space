@@ -1,33 +1,30 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   function buildHTML(message){
+    var insertText = ``
     if(message.body){
-      var pValue = `<p>
+      var insertText = `<p>
                     ${message.body}
                     </p>`
     }
-    else{
-      var pValue = ``
-    }
+
+    var img = ``
     if (message.image){
       var img = `<img class="chat-main_message-body-image" src="${message.image}" alt="" />`
     }
-    else{
-      var img = ``
-    }
 
-    var dat = new Date(message.created_at);
-    var created_at = `${dat.getFullYear()}/${dat.getMonth()}/${dat.getDate()} ${dat.getHours()}:${dat.getSeconds()}`
+    // var dat = new Date(message.created_at);
+    // var created_at = `${dat.getFullYear()}/${dat.getMonth()}/${dat.getDate()} ${dat.getHours()}:${dat.getSeconds()}`
 
     var html = `<div class='chat-main_body-messages-list' id="target">
-                <div class='chat-main_message'>
+                <div class='chat-main_message',data-message-id='${message.id}'>
                 <div class='chat-main_message-name'>
                 ${message.user_name}
                 </div>
                 <div class='chat-main_message-time'>
-                ${created_at}
+                ${message.created_at}
                 </div>
                 <div class='chat-main_message-body'>
-                ${pValue}
+                ${insertText}
                 ${img}
                 </div>
                 </div>
@@ -58,6 +55,31 @@ $(function(){
     .fail(function(){
       alert('error');
     });
-
   });
+
+  var interval = setInterval(function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      $.ajax({
+      url: location.href,
+      dataType: 'json'
+    })
+    .done(function(data){
+      var id = $('.chat-main_message').data('messageId');
+      var insertHTML = ``;
+
+      data.messages.forEach(function(message){
+        if(message.id > id){
+          insertHTML += buildHTML(message);
+        }
+      });
+      $('.chat-main_body').prepend(insertHTML);
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    });
+    }
+    else {
+      clearInterval(interval);
+    }
+  },5000);
 });
