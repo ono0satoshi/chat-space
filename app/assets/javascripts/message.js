@@ -68,8 +68,7 @@ $(document).on('turbolinks:load',function(){
       }
     })
     .done(function(messages){
-      console.log('data at out of each exist?');
-      console.log(messages);
+
       var insertHTML = ``;
 
       if (messages.length !== 0){
