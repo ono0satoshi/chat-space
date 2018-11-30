@@ -1,36 +1,31 @@
-$(function(){
+
+$(document).on('turbolinks:load',function(){
   function buildHTML(message){
+    var insertText = ``
     if(message.body){
-      var pValue = `<p>
+      var insertText = `<p>
                     ${message.body}
                     </p>`
     }
-    else{
-      var pValue = ``
-    }
+
+    var img = ``
     if (message.image){
       var img = `<img class="chat-main_message-body-image" src="${message.image}" alt="" />`
     }
-    else{
-      var img = ``
-    }
-
-    var dat = new Date(message.created_at);
-    var created_at = `${dat.getFullYear()}/${dat.getMonth()}/${dat.getDate()} ${dat.getHours()}:${dat.getSeconds()}`
 
     var html = `<div class='chat-main_body-messages-list' id="target">
-                <div class='chat-main_message'>
-                <div class='chat-main_message-name'>
-                ${message.user_name}
-                </div>
-                <div class='chat-main_message-time'>
-                ${created_at}
-                </div>
-                <div class='chat-main_message-body'>
-                ${pValue}
-                ${img}
-                </div>
-                </div>
+                  <div class='chat-main_message' data-message-id='${message.id}'>
+                    <div class='chat-main_message-name'>
+                      ${message.user_name}
+                    </div>
+                    <div class='chat-main_message-time'>
+                      ${message.created_at}
+                    </div>
+                    <div class='chat-main_message-body'>
+                      ${insertText}
+                      ${img}
+                    </div>
+                  </div>
                 </div>`
     return html;
   }
@@ -58,6 +53,42 @@ $(function(){
     .fail(function(){
       alert('error');
     });
-
   });
+
+  var interval = setInterval(function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+
+      message_id = $('.chat-main_message:last').data('messageId');
+
+      $.ajax({
+      url: location.href,
+      dataType: 'json',
+      data: {
+        message: {id: message_id}
+      }
+    })
+    .done(function(messages){
+
+      var insertHTML = ``;
+
+      if (messages.length !== 0){
+        messages.forEach(function(message){
+
+          insertHTML += buildHTML(message);
+
+        });
+
+        $('.chat-main_body').append(insertHTML);
+      }
+
+
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    });
+    }
+    else {
+      clearInterval(interval);
+    }
+  },5000);
 });

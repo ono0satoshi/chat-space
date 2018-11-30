@@ -5,6 +5,7 @@
   height:100vh;
   width:300px;
   position:fixed;
+  overflow: scroll;
 
   &_user {
   line-height: 100px;

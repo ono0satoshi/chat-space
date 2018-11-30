@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   var search_list = $('#incre-search');
   var join_list = $('#joinUser');
 
