@@ -4,7 +4,7 @@ lock "~> 3.11.0"
 set :application, "caht-space"
 set :repo_url, "git@github.com:ono0satoshi/chat-space.git"
 
-set :unicorn_pid, -> { "#{shared_path/tmp/pids/unicorn.pid}" }
+set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
 # Default branch is :master
@@ -44,8 +44,7 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: %w(/Users/onosatoshi/projects/aws/awsono3104goronyannekotyan),
-                  forward_agent: true
+                  keys: ['~/projects/aws/awsono3104goronyannekotyan.pem']
 
 after 'deploy:publishing','deploy:restart'
 namespace :deploy do
