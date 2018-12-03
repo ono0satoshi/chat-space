@@ -44,7 +44,7 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/projects/aws']
+                  keys: ['~/projects/aws/awsono3104goronyannekotyan']
 
 after 'deploy:publishing','deploy:restart'
 namespace :deploy do
