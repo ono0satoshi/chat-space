@@ -15,7 +15,7 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
-set :ssh_options, auth
+# set :ssh_options, auth
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
