@@ -46,7 +46,7 @@ set :keep_releases, 5
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/projects/aws/awsono3104goronyannekotyan.pem']
 
-set :default_ev, {
+set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
@@ -64,10 +64,10 @@ namespace :deploy do
   desc 'upload secrets.yml'
   task :upload do
     on roles(:app) do |host|
-      if test "[! -d #{shared_path}/config]"
+      if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
-      upload!('config/secrets.yml',"#{shared_path}/config/secrets.yml")
+      upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
     end
   end
   before :starting, 'deploy:upload'
