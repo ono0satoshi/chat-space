@@ -49,9 +49,12 @@ $(document).on('turbolinks:load',function(){
       document.getElementById('new_message').reset();
       var newPostPosi = $('#target').offset().top;
       $('html,body').animate({scrollTop:newPostPosi},'fast');
+      $('input[type="submit"]').prop("disabled",false);
+
     })
     .fail(function(){
-      alert('error');
+      alert('メッセージを入力してください。');
+      $('input[type="submit"]').prop("disabled",false);
     });
   });
 
@@ -59,33 +62,32 @@ $(document).on('turbolinks:load',function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
 
       message_id = $('.chat-main_message:last').data('messageId');
+      console.log(message_id);
+      if(message_id !== undefined){
+        $.ajax({
+          url: location.href,
+          dataType: 'json',
+          data: {
+            message: {id: message_id}
+          }
+        })
+        .done(function(messages){
 
-      $.ajax({
-      url: location.href,
-      dataType: 'json',
-      data: {
-        message: {id: message_id}
-      }
-    })
-    .done(function(messages){
+          var insertHTML = ``;
 
-      var insertHTML = ``;
+          if (messages.length !== 0){
+            messages.forEach(function(message){
 
-      if (messages.length !== 0){
-        messages.forEach(function(message){
+              insertHTML += buildHTML(message);
 
-          insertHTML += buildHTML(message);
-
+            });
+            $('.chat-main_body').append(insertHTML);
+          }
+        })
+        .fail(function(){
+          alert('自動更新に失敗しました');
         });
-
-        $('.chat-main_body').append(insertHTML);
       }
-
-
-    })
-    .fail(function(){
-      alert('自動更新に失敗しました');
-    });
     }
     else {
       clearInterval(interval);
