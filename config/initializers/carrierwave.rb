@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory = 'upload-for-reader'
-  config.asset_host = 'https://ap-northeast-1.amazonaws.com/upload-for-reader'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/upload-for-reader'
 end
