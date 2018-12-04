@@ -44,6 +44,7 @@ gem 'factory_girl_rails','~>4.4.1'
 gem 'faker'
 gem 'rails-controller-testing'
 gem 'fog-aws'
+gem 'devise-bootstrap-views','~>1.0'
 
 
 group :development, :test do
