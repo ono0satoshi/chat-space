@@ -27,26 +27,28 @@ $(document).on('turbolinks:load',function(){
   $('#user-search-field').on('keyup',function(){
     var input = $(this).val();
 
-    $.ajax({
-      type: 'GET',
-      url: '/users',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(users){
-      $('#incre-search').empty();
-      if(users.length !== 0){
-        users.forEach(function(user){
-          appendUser(user);
+    if(input.length !== 0){
+      $.ajax({
+        type: 'GET',
+        url: '/users',
+        data: { keyword: input },
+        dataType: 'json'
+      })
+      .done(function(users){
+        $('#incre-search').empty();
+        if(users.length !== 0){
+          users.forEach(function(user){
+            appendUser(user);
+        });
+        }
+        else {
+          appendNoUser('一致するユーサーはいません');
+        }
+      })
+      .fail(function(){
+        alert('ユーザー検索に失敗しました')
       });
-      }
-      else {
-        appendNoUser('一致するユーサーはいません');
-      }
-    })
-    .fail(function(){
-      alert('ユーザー検索に失敗しました')
-    });
+    }
 
     $(document).on('click','.user-search-add',function(e){
     var clickUserDiv = $(this);
