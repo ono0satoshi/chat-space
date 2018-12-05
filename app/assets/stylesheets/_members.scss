@@ -1,0 +1,14 @@
+#member-list{
+
+  overflow: hidden;
+  li {
+    text-align: center;
+    float:left;
+
+    li {
+      text-align: center;
+      float:left;
+      background: #ffffff;
+    }
+  }
+}

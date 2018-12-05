@@ -8,7 +8,12 @@
         %div.chat-main_header-edit-group.btn.btn-outline-info
           = link_to 'Edit',edit_group_path(@group)
       %div.chat-main_header-members
-        ="Member:" + @group.users.find(1).name
+        %ul#member-list
+          %li#triger
+            Members:
+          -@group.users.each do |user|
+            %li.hidden-list
+              = "#{user.name}&nbsp;&nbsp;".html_safe
     %div.chat-main_body
       = render @messages
     %div.chat-main_footer
