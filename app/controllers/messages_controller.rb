@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_group
+  before_action :correct_user
   def index
     @message = Message.new
     @messages = @group.messages.order(created_at: :ASC).includes(:user)
@@ -32,5 +33,12 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+  end
+
+  def correct_user
+    @current_group = current_user.groups.find_by(id: params[:group_id])
+    unless @current_group
+      redirect_to root_url
+    end
   end
 end
