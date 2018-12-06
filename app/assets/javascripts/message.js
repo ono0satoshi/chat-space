@@ -13,7 +13,7 @@ $(document).on('turbolinks:load',function(){
       var img = `<img class="chat-main_message-body-image" src="${message.image}" alt="" />`
     }
 
-    var html = `<div class='chat-main_body-messages-list' id="target">
+    var html = `<div class='chat-main_body-messages-list'>
                   <div class='chat-main_message' data-message-id='${message.id}'>
                     <div class='chat-main_message-name'>
                       ${message.user_name}
@@ -47,7 +47,7 @@ $(document).on('turbolinks:load',function(){
       var html = buildHTML(data);
       $('.chat-main_body').append(html);
       document.getElementById('new_message').reset();
-      var newPostPosi = $('#target').offset().top;
+      var newPostPosi = $('.chat-main_body-messages-list:last').offset().top;
       $('html,body').animate({scrollTop:newPostPosi},'fast');
       $('input[type="submit"]').prop("disabled",false);
 
